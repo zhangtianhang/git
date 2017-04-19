@@ -1,0 +1,6 @@
+*.pyc
+__pycache__
+mypos
+pos
+db.sqlite3
+.DS_Store
