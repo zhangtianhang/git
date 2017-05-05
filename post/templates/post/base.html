@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<html>
+
+<head>
+    <title></title>
+
+    <link rel="stylesheet" href="{% static 'css/shopping_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+
+    <script src="/static/js/jquery-3.2.1.js"></script>
+<script src="/static/js/shopping.js"></script>
+</head>
+<body>
+<div>
+    <ul class="menu">
+        <li><a href="http://www.baidu.com">Let's Go </a>
+
+        </li>
+        <li ><a href="homepage">主页 </a>
+
+        </li>
+        <li class="activi"><a href="shopping_list">商品列表</a>
+        </li>
+        <li><a href=""><img src="/static/image/gouwuche.gif" > 购物车(<number>{{ sum_count }}</number>)</a>
+        </li>
+
+    </ul>
+</div>
+
+    {% block content %}
+
+    {% endblock %}
+
+
+
+</body>
+
+</html>

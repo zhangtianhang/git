@@ -1,0 +1,32 @@
+{% extends 'post/base.html' %}
+    {% block content %}
+        <div class="list">
+    <h1>商品列表</h1>
+
+</div>
+<div class="groove">
+
+<table >
+    <tr>
+        <th>分类</th>
+        <th>名称</th>
+        <th>单价(元)</th>
+        <th>单位</th>
+        <th> </th>
+    </tr>
+      {% for post in goodslist %}
+    <tr>
+        <td> {{ post.classification }}</td>
+        <td>{{ post.name }}</td>
+
+        <td> {{ post.price }}</td>
+        <td>{{ post.unit }} </td>
+        <td ><div class="button"  id="{{ post.id }}">加入购物车</div></td>
+
+    </tr>
+    {% endfor %}
+        </table>
+
+      </div>
+    {% endblock content %}
+
