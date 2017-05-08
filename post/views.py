@@ -28,3 +28,7 @@ def shopping_list(request):
         return HttpResponse(PurchasedItems.shopping_cart())
 
     return render(request, 'post/shopping_list.html', {'goodslist': posts,'sum_count':PurchasedItems.shopping_cart()})
+def shopping_cart(request):
+    carts=PurchasedItems.objects.all()
+    print(carts)
+    return render(request, 'post/shopping_cart.html', {'carts':carts, 'sum_count': PurchasedItems.shopping_cart()})

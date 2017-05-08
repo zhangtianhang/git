@@ -1,5 +1,10 @@
 {% extends 'post/base.html' %}
-    {% block content %}
+{% load staticfiles %}
+{% block head %}
+   <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock head %}
+{% block home_nav%}active{% endblock %}
+{% block content %}
 <div class="min">
 
 

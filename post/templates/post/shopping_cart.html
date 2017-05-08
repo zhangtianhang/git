@@ -2,8 +2,7 @@
 {% load staticfiles %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/shopping_list.css' %}">
-    <script src="/static/js/jquery-3.2.1.js"></script>
-    <script src="/static/js/shopping.js"></script>
+
 {% endblock head %}
 {% block shopping_nav%} active{% endblock shopping_nav%}
 
@@ -20,18 +19,17 @@
                 <th>名称</th>
                 <th>单价(元)</th>
                 <th>单位</th>
-                <th></th>
+                <th>数量</th>
+                <th>数量</th>
             </tr>
-            {% for post in goodslist %}
+            {% for post in purchaseditems %}
                 <tr>
                     <td> {{ post.classification }}</td>
                     <td>{{ post.name }}</td>
 
                     <td> {{ post.price }}</td>
                     <td>{{ post.unit }} </td>
-                    <td>
-                        <div class="button" id="{{ post.id }}">加入购物车</div>
-                    </td>
+                    <td>{{ post.count }}</td>
 
                 </tr>
             {% endfor %}
