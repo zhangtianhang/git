@@ -1,13 +1,13 @@
 {% extends 'post/base.html' %}
 {% load staticfiles %}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/shopping_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shopping_cart.css' %}">
 
 {% endblock head %}
 {% block shopping_cart%}active{% endblock shopping_cart %}
 {% block content %}
     <div class="list">
-        <h1>商品列表</h1>
+        <h1>购物清单</h1>
     </div>
     <div class="groove">
         <table>
@@ -26,7 +26,7 @@
                     <td> {{ post.price }}</td>
                     <td>{{ post.unit }} </td>
                     <td>{{ post.count }}</td>
-                    <td>{{ post.subtotal }}</td>
+                    <td>{{subtotal }}</td>
                 </tr>
             {% endfor %}
         </table>
