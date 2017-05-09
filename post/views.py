@@ -16,14 +16,17 @@ def shopping_list(request):
             purchase[0].save()
         else:
             items = Goodslist.objects.filter(id=(request.POST['id']))
+            print(items[0])
 
-            PurchasedItems.objects.create(
-            count=1,
-            classification=items[0].classification,
-            goods_id=items[0].id,
-            name=items[0].name,
-            price=items[0].price,
-            unit=items[0].unit)
+            items
+            new_purchase_item = {'count': 1,
+                                 "classification":items[0].classification,
+                                 "goods_id": items[0].id,
+                                 "name": items[0].name,
+                                    "price": items[0].price,
+                                    "unit": items[0].unit
+                                 }
+            PurchasedItems.objects.create(**new_purchase_item)
 
         return HttpResponse(PurchasedItems.shopping_cart())
 
@@ -31,4 +34,4 @@ def shopping_list(request):
 def shopping_cart(request):
     carts=PurchasedItems.objects.all()
     print(carts)
-    return render(request, 'post/shopping_cart.html', {'carts':carts, 'sum_count': PurchasedItems.shopping_cart()})
+    return render(request, 'post/shopping_cart.html', {'carts':carts, 'sum_count':PurchasedItems.shopping_cart()})

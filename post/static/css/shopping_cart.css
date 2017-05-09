@@ -39,10 +39,11 @@ td{
       border-collapse:collapse;
      padding: 15px;
      font-size: 18px;
-     text-align: center;
+     text-align:left;
      background-color:#DCDCDC;
 
 }
+
 .button {
     background-color: #5b80b2;
     border: none;

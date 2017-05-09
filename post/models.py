@@ -27,6 +27,15 @@ class PurchasedItems(models.Model):
     @classmethod
     def shopping_cart(cls):
         sum_count = 0
-        for count in PurchasedItems.objects.all():
+        subtotal=0
+        for count  in PurchasedItems.objects.all():
             sum_count = sum_count + count.count
+
         return sum_count
+    def subtotal(cls):
+        subtotal=0
+
+
+    def foo(*args, **kwargs):
+        print('args = ', args)
+        print('kwargs = ', kwargs)

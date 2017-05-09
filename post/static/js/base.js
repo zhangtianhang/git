@@ -1,4 +1,4 @@
-function homepage(){
+function home(){
     location.href = "homepage";}
 function shopping_list(){
     location.href = '/shopping_list';

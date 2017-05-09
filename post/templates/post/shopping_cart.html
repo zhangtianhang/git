@@ -4,15 +4,12 @@
     <link rel="stylesheet" href="{% static 'css/shopping_list.css' %}">
 
 {% endblock head %}
-{% block shopping_nav%} active{% endblock shopping_nav%}
-
+{% block shopping_cart%}active{% endblock shopping_cart %}
 {% block content %}
     <div class="list">
         <h1>商品列表</h1>
-
     </div>
     <div class="groove">
-
         <table>
             <tr>
                 <th>分类</th>
@@ -20,17 +17,16 @@
                 <th>单价(元)</th>
                 <th>单位</th>
                 <th>数量</th>
-                <th>数量</th>
+                <th>小计</th>
             </tr>
-            {% for post in purchaseditems %}
+            {% for post in carts %}
                 <tr>
                     <td> {{ post.classification }}</td>
                     <td>{{ post.name }}</td>
-
                     <td> {{ post.price }}</td>
                     <td>{{ post.unit }} </td>
                     <td>{{ post.count }}</td>
-
+                    <td>{{ post.subtotal }}</td>
                 </tr>
             {% endfor %}
         </table>

@@ -12,9 +12,9 @@
 <body>
 <div class="frame">
     <div class="navigationbar page">Let's Go</div>
-    <div class="navigationbar actions {% block home_nav %}{% endblock home_nav %}" onclick="homepage()">主页</div>
+    <div class="navigationbar actions {% block home_nav %}{% endblock home_nav %}" onclick="home()">主页</div>
     <div  class="navigationbar actions {% block shopping_nav %}{% endblock shopping_nav %}" onclick="shopping_list()">商品列表</div>
-    <div class="navigationbar cartPosition actions {% block shopping_cart%}{% endblock shopping_cart %}" onclick="shopping_cart()"><img src="/static/image/gouwuche.gif" >购物车(<number>{{ sum_count }}</number>)</div>
+    <div class=" cartPosition actions {% block shopping_cart%}{% endblock shopping_cart %}" onclick="shopping_cart()"><img src="/static/image/gouwuche.gif" >购物车(<number>{{ sum_count }}</number>)</div>
 </div>
 {% block content %}
 {% endblock %}
