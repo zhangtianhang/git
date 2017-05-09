@@ -7,30 +7,31 @@
 {% block shopping_cart%}active{% endblock shopping_cart %}
 {% block content %}
     <div class="list">
-        <h1>购物清单</h1>
-    </div>
-    <div class="groove">
-        <table>
-            <tr>
-                <th>分类</th>
-                <th>名称</th>
-                <th>单价(元)</th>
-                <th>单位</th>
-                <th>数量</th>
-                <th>小计</th>
-            </tr>
-            {% for post in carts %}
+        <div class="min">
+            <h1>商品列表</h1>
+        </div>
+        <div class="inform">
+            <table>
                 <tr>
-                    <td> {{ post.classification }}</td>
-                    <td>{{ post.name }}</td>
-                    <td> {{ post.price }}</td>
-                    <td>{{ post.unit }} </td>
-                    <td>{{ post.count }}</td>
-                    <td>{{subtotal }}</td>
+                    <th>分类</th>
+                    <th>名称</th>
+                    <th>单价(元)</th>
+                    <th>单位</th>
+                    <th>数量</th>
+                    <th>小计</th>
                 </tr>
-            {% endfor %}
-        </table>
-
+                {% for post in carts %}
+                    <tr>
+                        <td> {{ post.classification }}</td>
+                        <td>{{ post.name }}</td>
+                        <td> {{ post.price }}</td>
+                        <td>{{ post.unit }} </td>
+                        <td>{{ post.count }}</td>
+                        <td>{{subtotal }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 {% endblock content %}
 
