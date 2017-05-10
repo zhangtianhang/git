@@ -26,8 +26,12 @@
                         <td>{{ post.name }}</td>
                         <td> {{ post.price }}</td>
                         <td>{{ post.unit }} </td>
-                        <td>{{ post.count }}</td>
-                        <td>{{subtotal }}</td>
+                        <div class="symbol">
+                        <td>
+                            {{ post.count }}
+                        </td>
+                        </div>
+                        <td>{{post.subtotal }}</td>
                     </tr>
                 {% endfor %}
             </table>
