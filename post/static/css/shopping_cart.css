@@ -59,6 +59,39 @@ td{
     top:3px;
 }
 .symbol{
+     border-style:solid;
+     border-width: thin;
+     border-color: #bbbbbb;
+     margin: 5px 5px;
+     border-radius:4px ;
+
+     display: inline-block;
 
 
+}
+.minus,.quantity{
+
+    float:left;
+    font-size: 25px;
+
+}
+
+.minus {
+        border-right-style: solid ;
+         border-width: thin;
+         padding: 0 20px;
+         float: left;
+}
+.quantity{
+    text-align: center;
+    padding:0 20px;
+
+}
+.plus{
+
+    border-left: solid;
+    border-width: thin;
+    float: right;
+    padding: 0 20px;
+    font-size:25px;
 }
