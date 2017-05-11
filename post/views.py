@@ -30,4 +30,8 @@ def shopping_list(request):
     return render(request, 'post/shopping_list.html', {'goodslist': posts,'sum_count':PurchasedItems.shopping_cart()})
 def shopping_cart(request):
     carts=PurchasedItems.objects.all()
+    if request.method == 'POST':
+        purchase= PurchasedItems.objects.filter(goods_id=(request.POST['id']))
+        print(purchase)
+
     return render(request, 'post/shopping_cart.html', {'carts':carts, 'sum_count':PurchasedItems.shopping_cart()})

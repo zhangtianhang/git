@@ -2,13 +2,15 @@
 {% load staticfiles %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/shopping_cart.css' %}">
+    <script src="/static/js/jquery-3.2.1.js"></script>
+    <script src="/static/js/cart.js"></script>
 
 {% endblock head %}
 {% block shopping_cart%}active{% endblock shopping_cart %}
 {% block content %}
     <div class="list">
         <div class="min">
-            <h1>商品列表</h1>
+            <h1>购物清单</h1>
         </div>
         <div class="inform">
             <table>
@@ -29,9 +31,14 @@
 
                         <td>
                             <div class="symbol">
-                                <div class="minus" id="goods_id">-</div>
-                                <div class="quantity" id="goods_id">{{ post.count }}</div>
-                                <div class="plus">+</div>
+
+                                <div class="minus" >
+
+                                    <button class="minus-ll" id={{ post.goods_id }}>-</button></div>
+                                <div class="quantity" >
+                                    <num>0</num></div>
+                                <div class="plus">
+                                    <button class="plus-ll" id={{ post.goods_id }}>+</button></div>
                             </div>
                         </td>
 
