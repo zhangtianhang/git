@@ -31,7 +31,12 @@ def shopping_list(request):
 def shopping_cart(request):
     carts=PurchasedItems.objects.all()
     if request.method == 'POST':
-        purchase= PurchasedItems.objects.filter(goods_id=(request.POST['id']))
-        print(purchase)
+        goods= PurchasedItems.objects.filter(goods_id=(request.POST['id']))
+        goods[0].count= goods[0].count+(int(request.POST['changecount']))
+        print(request.POST['changecount'])
+        goods[0].save()
 
-    return render(request, 'post/shopping_cart.html', {'carts':carts, 'sum_count':PurchasedItems.shopping_cart()})
+
+    return render(request, 'post/shopping_cart.html', {'carts':carts,
+                                                       'sum_count':PurchasedItems.shopping_cart()
+                                                       })

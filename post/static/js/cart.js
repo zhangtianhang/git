@@ -1,19 +1,27 @@
 $(document).ready(function () {
     $('button').click(function () {
         var count=0
-        if(this.class='minus-ll'){
+
+
+        if($(this).attr('class')=="minus-ll" ){
+
             count=-1;
-            return count
+
+
         }
-        if(this.class='plus-ll') {
-                count+= 1;
-                return count
+        if($(this).attr('class')=="plus-ll" ) {
+
+            count=+1;
+
+
+
             }
                 $.ajax({
                     url:'/shopping_cart',
                     type:'post',
                     data:{id:$(this).attr('id'),changecount:count},
-                    success:function (sum_count) {
+                    success:function (quantity) {
+                        $("num").text();
 
                     }
                 })
