@@ -21,7 +21,7 @@ $(document).ready(function () {
                     type:'post',
                     data:{id:$(this).attr('id'),changecount:count},
                     success:function (quantity) {
-                        $("num").text();
+
 
                     }
                 })

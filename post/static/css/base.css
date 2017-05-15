@@ -24,10 +24,10 @@ body{
      background: black;
     color: white;
 }
-.frame.actions{
-    background-color: #666666;
-    color: #bbbbbb;
-}
+/*.frame.actions{*/
+    /*background-color: #666666;*/
+    /*color: #bbbbbb;*/
+/*}*/
 .cartPosition{
     color: #bebdc1;
     width: 100px;

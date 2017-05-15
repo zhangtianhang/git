@@ -32,9 +32,18 @@ def shopping_cart(request):
     carts=PurchasedItems.objects.all()
     if request.method == 'POST':
         goods= PurchasedItems.objects.filter(goods_id=(request.POST['id']))
-        goods[0].count= goods[0].count+(int(request.POST['changecount']))
-        print(request.POST['changecount'])
+
+        # count=int(request.POST['changecount'])
+        # print(count)
+        # print(type(count))
+        goods[0].count = goods[0].count + 1
+
+        print(goods[0].count)
         goods[0].save()
+
+        print(goods[0].count)
+
+
 
 
     return render(request, 'post/shopping_cart.html', {'carts':carts,
