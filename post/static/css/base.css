@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    min-width: 966px;
+    min-width: 800px;
 }
 .frame {
     background-color: #666666;
@@ -30,7 +30,6 @@ body{
 /*}*/
 .cartPosition{
     color: #bebdc1;
-    width: 100px;
     float: right;
     line-height: 80px;
     font-size:18px;

@@ -32,20 +32,20 @@ def shopping_cart(request):
     carts=PurchasedItems.objects.all()
     if request.method == 'POST':
         goods= PurchasedItems.objects.filter(goods_id=(request.POST['id']))
+        if goods:
+            print(request.POST['changecount'])
+            count = int(request.POST['changecount'])
+            goods[0].count = goods[0].count + count
+            goods[0].subtotal = goods[0].price * goods[0].count
+            if goods[0].count==0:
+                goods.delete()
+                goods.save()
+            goods[0].save()
+        sub_count=goods[0].count
+        subtotal=goods[0].subtotal
+        result={'sub_count':sub_count,'subtotal':subtotal}
 
-        # count=int(request.POST['changecount'])
-        # print(count)
-        # print(type(count))
-        goods[0].count = goods[0].count + 1
-
-        print(goods[0].count)
-        goods[0].save()
-
-        print(goods[0].count)
-
-
-
-
+        return JsonResponse(result)
     return render(request, 'post/shopping_cart.html', {'carts':carts,
                                                        'sum_count':PurchasedItems.shopping_cart()
                                                        })

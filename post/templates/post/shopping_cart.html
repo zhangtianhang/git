@@ -36,13 +36,16 @@
 
                                     <button class="minus-ll" id={{ post.goods_id }}>-</button></div>
                                 <div class="quantity" >
-                                    <num>{{post.count}}</num></div>
-                                <div class="plus">
-                                    <button class="plus-ll" id={{ post.goods_id }}>+</button></div>
+                                    <span>{{post.count}}</span></div>
+                                <div class="plus" >
+                                   <button class="plus-ll" id={{ post.goods_id }}>+</button></div>
                             </div>
                         </td>
 
-                        <td>{{post.subtotal }}</td>
+
+
+
+                        <td><numbr>{{post.subtotal }}</numbr></td>
                     </tr>
                 {% endfor %}
             </table>
