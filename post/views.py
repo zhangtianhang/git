@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Goodslist
 from  .models import PurchasedItems
+from  .models import Preferential
 from  django.http import JsonResponse
 from django.http import  HttpResponse
 # Create your views here.
@@ -33,17 +34,29 @@ def shopping_cart(request):
     if request.method == 'POST':
         goods= PurchasedItems.objects.filter(goods_id=(request.POST['id']))
         if goods:
-            print(request.POST['changecount'])
             count = int(request.POST['changecount'])
             goods[0].count = goods[0].count + count
-            goods[0].subtotal = goods[0].price * goods[0].count
+            preferential=Preferential.objects.filter(goods_id=(request.POST['id']))
+            if preferential:
+                goods[0].subtotal=  preferential[0].price * (goods[0].count - int(goods[0].count / 3))
+
+            else:
+                goods[0].subtotal = goods[0].price * goods[0].count
+            goods[0].costprice= goods[0].price * goods[0].count
             if goods[0].count==0:
-                goods.delete()
+                goods[0].delete()
                 goods.save()
-            goods[0].save()
-        sub_count=goods[0].count
+                sub_count=0
+            else:
+                goods[0].save()
+                sub_count=goods[0].count
+
         subtotal=goods[0].subtotal
-        result={'sub_count':sub_count,'subtotal':subtotal}
+        costprice=goods[0].costprice
+        print(costprice)
+        sum_count=PurchasedItems.shopping_cart()
+
+        result={'sub_count':sub_count,'subtotal':subtotal,'sum_count':sum_count,'costprice':costprice}
 
         return JsonResponse(result)
     return render(request, 'post/shopping_cart.html', {'carts':carts,

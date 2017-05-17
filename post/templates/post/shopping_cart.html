@@ -45,11 +45,12 @@
 
 
 
-                        <td><numbr>{{post.subtotal }}</numbr></td>
+                        <td><numbr>{{post.subtotal }}</numbr>元(原价:<num>{{ post.costprice}}</num>元)</td>
                     </tr>
                 {% endfor %}
             </table>
         </div>
+        <div class="text">总计:</div>
     </div>
 {% endblock content %}
 

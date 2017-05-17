@@ -89,4 +89,8 @@ td{
     height: 30px;
     cursor: pointer;
 }
-.num{}
+.text{
+  text-align: right;
+    padding: 0px 30px 50px ;
+
+}

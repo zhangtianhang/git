@@ -15,9 +15,16 @@ $(document).ready(function () {
             type: 'post',
             data: {id: $(this).attr('id'), changecount: count},
             success: function (result) {
+                if(result.count==0){
+                    $("#"+id).parent().parent().parent().parent().detach()
+                }
+                 $("number").text(result.sum_count)
                 $("#"+id).parent().siblings().find('span').text(result.sub_count);
-                console.log($("#"+id).parent().siblings().find('span'))
-                $("#"+id).parent().parent().parent().siblings().find('numbr').text(result.subtotal)
+
+                    $("#"+id).parent().parent().parent().siblings().find('numbr').text(result.subtotal)
+
+                    $("#"+id).parent().parent().parent().siblings().find('num').text(result.costprice)
+
 
             }
         })
