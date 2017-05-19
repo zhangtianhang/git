@@ -1,0 +1,70 @@
+{% extends 'pos/base.html' %}
+{% load staticfiles %}
+{% block title %}
+    付款
+{% endblock %}
+{% block list %}
+    <div class="header">
+        <input class="header-list-frame" type="button" value="Let's Go">
+        <input class="header-list-frame" type="button" value="主页" id="pos">
+        <input class="header-list-frame" type="button" value="商品列表" id="product_list">
+        <button class="header-list-frame right " id="cart"><img src="{% static 'pos/img/5415eaf8bb.png' %}" class="header-img">购物车(<span id="number">{{ number }}</span>)</button>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="">
+        <div class="pay-content-form">
+            <div class="pay-content-form-height ">购物清单</div>
+            <div class="pay-date-time"><p id="date_time"></p></div>
+            <div>
+                <table class="pay-content-form-margin">
+                    <tr>
+                        <td class="pay-form-width">分类</td>
+                        <td class="pay-form-widths">名称</td>
+                        <td class="pay-form-widths">单价(元)</td>
+                        <td class="pay-form-width">单位</td>
+                        <td class="pay-content-form-width">数量</td>
+                        <td class="pay-content-form-width">小计</td>
+                    </tr>
+                    {% for user_good in user_goods %}
+                        <tr>
+                            <td class="pay-form-width">{{ user_good.classification}}</td>
+                            <td class="pay-form-widths">{{ user_good.name }}</td>
+                            <td class="pay-form-widths">{{ user_good.price }}</td>
+                            <td class="pay-form-width">{{ user_good.unit }}</td>
+                            <td class="pay-content-form-width">{{ user_good.count }}</td>
+                            <td class="pay-content-form-width">
+                                <span>{{ user_good.subtotal }}</span>元
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="pay-content-form pay-payment-margin">
+            <div class="pay-content-form-height ">赠送商品</div>
+            <div>
+                <table class="pay-content-form-margin">
+                    <tr>
+                        <td class="pay-payment-width">分类</td>
+                        <td class="pay-payment-form-width">名称</td>
+                        <td class="pay-payment-width">数量</td>
+                    </tr>
+                    {% for good in preferrntial_goods %}
+                        <tr>
+                            <td class="pay-payment-width">{{ good.classification }}</td>
+                            <td class="pay-payment-form-width">{{ good.name }}</td>
+                            <td class="pay-payment-width">{{ good.freecount }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <div class="pay-content-total">总计：<span>{{ total }}</span>元</div>
+                <div class="pay-content-save">节省：<span>{{ save }}</span>元</div>
+                <div class="pay-content-button"><input class="pay-button" type="button" id="confirmation" value="确认"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'pos/js/payment.js' %}"></script>
+{% endblock %}

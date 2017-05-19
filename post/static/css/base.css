@@ -24,10 +24,7 @@ body{
      background: black;
     color: white;
 }
-/*.frame.actions{*/
-    /*background-color: #666666;*/
-    /*color: #bbbbbb;*/
-/*}*/
+
 .cartPosition{
     color: #bebdc1;
     float: right;
@@ -51,73 +48,3 @@ img{
     width:15px;
     vertical-align: -1px;
 }
-
-/*body {*/
-    /*min-width: 678px;*/
-    /*margin: 0;*/
-/*}*/
-
-/*a{*/
-    /*text-decoration: none;*/
-    /*color: #bbbbbb;*/
-    /*display: block;*/
-    /*font-size: 18px;*/
-    /*line-height: 70px;*/
-    /*padding: 0 25px;*/
-/*}*/
-
-/*.activi a{*/
-     /*background: black;*/
-    /*color: white;*/
-/*}*/
-/*.actions a {*/
-    /*background-color: #666666;*/
-    /*color: #bbbbbb;*/
-/*}*/
-/*a:hover {*/
-    /*color: white;*/
-    /*background-color: black;*/
-    /*text-underline-style: none*/
-/*}*/
-/*.menu {*/
-    /*position:relative;*/
-    /*padding: 0 80px ;*/
-    /*background-color: #666666;*/
-    /*height: 70px;*/
-    /*margin-top: 0;*/
-/*}*/
-
-/*.menu li {*/
-    /*display: block;*/
-    /*float: left;*/
-    /*position: relative;*/
-
-
-/*}*/
-
-/*.menu li:last-child {*/
-
-    /*float: right;*/
-
-/*}*/
-
-
-
-/*h1 {*/
-    /*color: black;*/
-    /*font-family: 'Lobster';*/
-    /*font-size: 70px;*/
-/*}*/
-
-
-
-/*img{*/
-
-    /*height:15px;*/
-    /*width:15px;*/
-    /*vertical-align: -1px;*/
-    /*}*/
-
-
-
-

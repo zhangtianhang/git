@@ -30,35 +30,74 @@ def shopping_list(request):
 
     return render(request, 'post/shopping_list.html', {'goodslist': posts,'sum_count':PurchasedItems.shopping_cart()})
 def shopping_cart(request):
+
+    total=0
     carts=PurchasedItems.objects.all()
+    for goods in carts:
+        if Preferential.objects.filter(goods_id=goods.goods_id):
+            goods.subtotal =goods.price * (goods.count - int(goods.count / 3))
+            goods.freecount=int(goods.count / 3)
+        else:
+            goods.subtotal = goods.price * goods.count
+        goods.costprice = goods.price * goods.count
+        goods.save()
+        total+=goods.subtotal
     if request.method == 'POST':
         goods= PurchasedItems.objects.filter(goods_id=(request.POST['id']))
+
         if goods:
             count = int(request.POST['changecount'])
             goods[0].count = goods[0].count + count
             preferential=Preferential.objects.filter(goods_id=(request.POST['id']))
             if preferential:
-                goods[0].subtotal=  preferential[0].price * (goods[0].count - int(goods[0].count / 3))
+                preferential[0].count=int(goods[0].count / 3)
+                goods[0].subtotal=preferential[0].price * (goods[0].count - int(goods[0].count / 3))
+                preferential[0].subtotal = preferential[0].price * (goods[0].count - int(goods[0].count / 3))
+                preferential[0].save()
 
             else:
                 goods[0].subtotal = goods[0].price * goods[0].count
             goods[0].costprice= goods[0].price * goods[0].count
             if goods[0].count==0:
                 goods[0].delete()
-                goods.save()
                 sub_count=0
+
             else:
                 goods[0].save()
                 sub_count=goods[0].count
-
         subtotal=goods[0].subtotal
         costprice=goods[0].costprice
-        print(costprice)
         sum_count=PurchasedItems.shopping_cart()
-
-        result={'sub_count':sub_count,'subtotal':subtotal,'sum_count':sum_count,'costprice':costprice}
+        total = PurchasedItems.shopping_total()
+        result={'sub_count':sub_count,'subtotal':subtotal,'sum_count':sum_count,'costprice':costprice,'total':total}
 
         return JsonResponse(result)
+
     return render(request, 'post/shopping_cart.html', {'carts':carts,
-                                                       'sum_count':PurchasedItems.shopping_cart()
+                                                       'sum_count':PurchasedItems.shopping_cart(),
+                                                       'total':total,
+
                                                        })
+def go(request):
+
+    carts = PurchasedItems.objects.all()
+
+    preferrntial_goods = carts.exclude(freecount=0)
+    if request.method == 'POST':
+        PurchasedItems.objects.all().delete()
+        return HttpResponse()
+    total = 0
+    save = 0
+    for goods in PurchasedItems.objects.all():
+        total += goods.subtotal
+        save += goods.costprice
+    save = save - total
+
+    return render(request, 'post/go.html',{
+                                           'carts':carts,
+                                           'sum_count':PurchasedItems.shopping_cart(),
+                                           'total':total,
+                                           'save':save,
+                                           'preferrntial_goods':preferrntial_goods
+
+                                           })

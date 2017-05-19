@@ -18,10 +18,11 @@ th{
 }
 td{
     text-align: center;
+    height: 30px;
 }
 .min h1{
     border-bottom-style:solid;
-    border-width: 2px;
+    border-width: 1px;
     border-color: #bbbbbb;
     background:#DCDCDC;
     margin:0;
@@ -55,37 +56,7 @@ td{
 
 
 }
-.minus,.quantity{
 
-    float:left;
-    font-size: 25px;
-
-}
-
-.minus {
-        border-right-style: solid ;
-         border-width: thin;
-         float: left;
-        border-color: #bbbbbb;
-}
-.quantity{
-    padding:0 10px;
-
-}
-.plus{
-
-    border-left: solid;
-    border-width: thin;
-    float: right;
-    border-color: #bbbbbb;
-}
-.plus-ll,.quantity-ll,.minus-ll{
-    background: white;
-    border-style: none;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
 .text{
     margin: 0 30px 10px 0;
 }

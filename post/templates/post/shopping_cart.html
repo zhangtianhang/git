@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{% static 'css/shopping_cart.css' %}">
     <script src="/static/js/jquery-3.2.1.js"></script>
     <script src="/static/js/cart.js"></script>
+    <script src="{% static 'js/base.js' %}"></script>
 
 {% endblock head %}
 {% block shopping_cart%}active{% endblock shopping_cart %}
@@ -41,16 +42,15 @@
                                    <button class="plus-ll" id={{ post.goods_id }}>+</button></div>
                             </div>
                         </td>
+                        <td><numbr>{{post.subtotal}}元</numbr>
 
-
-
-
-                        <td><numbr>{{post.subtotal }}</numbr>元(原价:<num>{{ post.costprice}}</num>元)</td>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>
         </div>
-        <div class="text">总计:</div>
+        <div class="text">总计:<num>{{total}}</num>元</div>
+
+        <div class="button"   onclick="go()">付款</div>
     </div>
 {% endblock content %}
-

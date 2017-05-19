@@ -21,8 +21,7 @@ class PurchasedItems(models.Model):
     unit=models.CharField(max_length=10,default='')
     subtotal= models.FloatField(max_length=10, default=0)
     costprice=models.FloatField(max_length=10, default=0)
-
-    freecount = models.IntegerField(default=1,null=False)
+    freecount = models.IntegerField(default=0,null=False)
 
     def __str__(self):
         return self.classification
@@ -32,6 +31,15 @@ class PurchasedItems(models.Model):
         for count  in PurchasedItems.objects.all():
             sum_count = sum_count + count.count
         return sum_count
+
+    @classmethod
+    def shopping_total(cls):
+        total=0
+        for count in PurchasedItems.objects.all():
+           total = total + count.subtotal
+        return total
+
+
 class Preferential(models.Model):
     classification = models.CharField(max_length=10, null='')
     name = models.CharField(max_length=10, null='')

@@ -15,19 +15,30 @@ $(document).ready(function () {
             type: 'post',
             data: {id: $(this).attr('id'), changecount: count},
             success: function (result) {
-                if(result.count==0){
+                if(result.sub_count==0){
                     $("#"+id).parent().parent().parent().parent().detach()
                 }
-                 $("number").text(result.sum_count)
                 $("#"+id).parent().siblings().find('span').text(result.sub_count);
+                if(result.subtotal==result.costprice){
+                    $("#"+id).parent().parent().parent().siblings().find('numbr').text(result.subtotal+'元')
 
-                    $("#"+id).parent().parent().parent().siblings().find('numbr').text(result.subtotal)
+                }else{
+                    $("#"+id).parent().parent().parent().siblings().find('numbr').text(result.subtotal+'元'+'(原价:'+result.costprice+'元)')
 
-                    $("#"+id).parent().parent().parent().siblings().find('num').text(result.costprice)
+                }
+
+                $("number").text(result.sum_count)
+                if(result.sum_count==0){
+                    location.href = '/shopping_list';
+                }
+                 $("num").text(result.total)
+
+
 
 
             }
         })
     })
+
 })
 

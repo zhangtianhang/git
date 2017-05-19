@@ -6,3 +6,6 @@ function shopping_list(){
 function shopping_cart() {
     location.href = "/shopping_cart"
 }
+function go(){
+    location.href = "/go"
+}
