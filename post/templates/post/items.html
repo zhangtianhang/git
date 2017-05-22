@@ -35,6 +35,9 @@
                             <td class="pay-content-form-width">{{ user_good.count }}</td>
                             <td class="pay-content-form-width">
                                 <span>{{ user_good.subtotal }}</span>元
+                                {% if user_good.costprice > user_good.subtotal %}
+                                    <span>(原价：<span>{{ user_good.costprice }}</span>元)</span>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}

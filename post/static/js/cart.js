@@ -19,14 +19,14 @@ $(document).ready(function () {
                     $("#"+id).parent().parent().parent().parent().detach()
                 }
                 $("#"+id).parent().siblings().find('span').text(result.sub_count);
+
                 if(result.subtotal==result.costprice){
-                    $("#"+id).parent().parent().parent().siblings().find('numbr').text(result.subtotal+'元')
+                    $("#"+id).parent().parent().parent().next().text(result.subtotal.toFixed(1)+'元')
 
                 }else{
-                    $("#"+id).parent().parent().parent().siblings().find('numbr').text(result.subtotal+'元'+'(原价:'+result.costprice+'元)')
+                    $("#"+id).parent().parent().parent().next().text(result.subtotal.toFixed(1)+'元'+'(原价:'+result.costprice.toFixed(1)+'元)')
 
                 }
-
                 $("number").text(result.sum_count)
                 if(result.sum_count==0){
                     location.href = '/shopping_list';

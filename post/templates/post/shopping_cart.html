@@ -42,8 +42,10 @@
                                    <button class="plus-ll" id={{ post.goods_id }}>+</button></div>
                             </div>
                         </td>
-                        <td><numbr>{{post.subtotal}}元</numbr>
-
+                        <td>{{post.subtotal}}元
+                                {% if post.costprice > post.subtotal %}
+                                    <numbr>(原价：<numbr>{{post.costprice }}</numbr>元)</numbr>
+                                {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

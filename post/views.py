@@ -36,24 +36,24 @@ def shopping_cart(request):
     for goods in carts:
         if Preferential.objects.filter(goods_id=goods.goods_id):
             goods.subtotal =goods.price * (goods.count - int(goods.count / 3))
-            goods.freecount=int(goods.count / 3)
+            goods.freecount = int(goods.count / 3)
         else:
             goods.subtotal = goods.price * goods.count
         goods.costprice = goods.price * goods.count
         goods.save()
         total+=goods.subtotal
+    PurchasedItems.objects.filter(count=0).delete()
     if request.method == 'POST':
         goods= PurchasedItems.objects.filter(goods_id=(request.POST['id']))
-
         if goods:
             count = int(request.POST['changecount'])
             goods[0].count = goods[0].count + count
             preferential=Preferential.objects.filter(goods_id=(request.POST['id']))
-            if preferential:
-                preferential[0].count=int(goods[0].count / 3)
+            if Preferential.objects.filter(goods_id=(request.POST['id'])):
                 goods[0].subtotal=preferential[0].price * (goods[0].count - int(goods[0].count / 3))
-                preferential[0].subtotal = preferential[0].price * (goods[0].count - int(goods[0].count / 3))
-                preferential[0].save()
+                goods[0].freecount = int(goods[0].count / 3)
+                goods[0].save()
+               
 
             else:
                 goods[0].subtotal = goods[0].price * goods[0].count
